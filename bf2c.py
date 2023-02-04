@@ -1,8 +1,6 @@
 # horrible code made by the amazing me (Nurdle)
 # completely open for free use
 
-import os
-
 def transpile_f(src, output = "") -> str:
 	'''
  	Transpiles brainfuck code from file path
