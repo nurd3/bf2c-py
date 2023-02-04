@@ -1,18 +1,22 @@
+# About
+bf2c-py is a python module that was poorly written by Nurdle (me).
+It outputs C code and optionally C files, they maintain comments (still looks a little messy) and has some very useless attempts at optimization
 # How To Use
 Download `bf2c.py`, create a python script called whatever,
 import `bf2c.py` in your python script
 ```py
 import bf2c
 ```
-and transpile your code using the `transpile` function:
-```py
-bf2c.transpile("brainfuck code here")
-```
-bf2c exports into `main.c`, if you have a c script you don't want to be replaced, remember to change its name.
-# Transpile a file
-You can easily take a bf file `main.bf` and transpile it into a c file using the script below
+### transpile(`code: str`, `output: str = ""`)
++ `file` - the brainfuck code to transpile<br>
++ `output` - the name of the c file to output to (leave blank to just return string)
+### transpile_f(`file: str`, `output: str = ""`)
++ `file` - the name of the brainfuck file to transpile<br>
++ `output` - the name of the c file to output to (leave blank to just return string)
+# Example scripts
+take a bf file `main.bf` and export a C file `main.c`
 ```py
 import bf2c
-with open("main.bf", "r") as f:
-	bf2c.transpile(f.read())
+
+bf2c.transpile("main.bf", "main.c")
 ```
