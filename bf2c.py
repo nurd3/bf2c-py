@@ -3,7 +3,8 @@
 
 import os
 
-def bf2c(bf):
+def transpile(code):
+	'''Takes Brainfuck code and exports a C file'''
 	tokens = [
 		"+",
 		"-",
@@ -16,7 +17,7 @@ def bf2c(bf):
 	]
 	comment = ""
 	script = []
-	for i in bf:
+	for i in code:
 		if i in tokens:
 			if comment != "":
 				script.append(comment.replace("*/", "*\/").replace("\n", " "))
@@ -84,8 +85,8 @@ def bf2c(bf):
 		i += 1
 	if balance != 1:
 		print("err: unmatched square bracket")
-		return 1
+		return None
 	out += "\treturn 0;\n}"
 	with open("main.c", "w") as f:
 		f.write(out)
-	return 0
+	return out
