@@ -1,6 +1,6 @@
 # About
 bf2c-py is a python module that was poorly written by Nurdle (me).
-It outputs C code and optionally C files, they maintain comments (still looks a little messy) and has some very useless attempts at optimization
+It outputs C code and optionally C files, it tries to maintain comments (still looks a little messy) and has some very useless attempts at optimization
 # How To Use
 Download `bf2c.py`, create a python script called whatever,
 import `bf2c.py` in your python script
