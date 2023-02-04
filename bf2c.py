@@ -3,8 +3,27 @@
 
 import os
 
-def transpile(code):
-	'''Takes Brainfuck code and exports a C file'''
+def transpile_f(src, output = "") -> str:
+	'''
+ 	Transpiles brainfuck code from file path
+  	
+ 	:param src: The brainfuck file you wish to transpile
+  	:type src: str
+  	:param output: The name of the exported C file (leave blank if you don't want it to make a C file)
+   	:type output: str or None
+ 	'''
+	with open(src, "r") as f:
+		return transpile(f.read(), output)
+
+def transpile(code, output = "") -> str:
+	'''
+ 	Transpiles brainfuck code from string
+  	
+ 	:param code: The brainfuck code you wish to transpile
+  	:type code: str
+  	:param output: The name of the exported C file (leave blank if you don't want it to make a C file)
+   	:type output: str or None
+ 	'''
 	tokens = [
 		"+",
 		"-",
@@ -87,6 +106,7 @@ def transpile(code):
 		print("err: unmatched square bracket")
 		return None
 	out += "\treturn 0;\n}"
-	with open("main.c", "w") as f:
-		f.write(out)
+	if output != "": 
+		with open(output, "w") as f:
+			f.write(out)
 	return out
